@@ -20,11 +20,23 @@ Convert a Markdown file to HTML:
 ```sh
 docker run --rm -v "$PWD:/data" pandoc-extra source.md -o output.html
 ```
+or if you pull the Docker image from Docker Hub:
+
+```sh
+docker run --rm -v "$PWD:/data" drdpham/pandoc-extra:latest source.md -o output.html
+```
+
 
 To run an interactive shell, you need to override the default entrypoint:
 
 ```sh
 docker run --rm -it -v "$PWD:/data" --entrypoint /bin/sh pandoc-extra
+```
+
+or equivalently:
+
+```sh
+docker run --rm -it -v "$PWD:/data" --entrypoint /bin/sh drdpham/pandoc-extra:latest
 ```
 
 
@@ -34,6 +46,13 @@ Run a Makefile in the mounted project directory. Override the inherited Pandoc e
 ```sh
 docker run --rm -v "$PWD:/data" --entrypoint make pandoc-extra
 ```
+
+or:
+
+```sh
+docker run --rm -v "$PWD:/data" --entrypoint make drdpham/pandoc-extra:latest
+```
+
 
 ### Use in GitLab CI
 
